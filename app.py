@@ -77,11 +77,11 @@ if page == 'Interview Preparation':
                 # Persona prompt pattern
                 interview_prompt = f"Imagine you are a {user_choice_role} interviewer, give most important and frequently asked interview questions on {st.session_state.user_topic} topics"
                 response_interview = model.generate_content([interview_prompt])
-                st.text(response_interview.text)
+                st.write(response_interview.text)
             else:
                 response_prompt = f"Help me learn {st.session_state.user_topic} for {user_choice_role} interview with examples and solutions."
                 response = model.generate_content([response_prompt])
-                st.text(response.text)
+                st.write(response.text)
 
 elif page == 'Ask a Question':
     st.subheader('Ask a Question')
