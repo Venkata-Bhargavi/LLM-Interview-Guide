@@ -89,9 +89,19 @@ elif page == 'Ask a Question':
 
     if st.button('Get Answer'):
         try:
-            chain_of_thought_prompt = f"Solve the following problem step-by-step: {question}"
+            chain_of_thought_prompt = (
+                f"Solve the following problem step-by-step:\n\n"
+                f"1. Understand the Problem: Clarify what the problem is asking and summarize it.\n"
+                f"2. Identify Requirements: List the key requirements or constraints needed to solve the problem.\n"
+                f"3. Develop a Strategy: Outline a strategy or approach to solve the problem based on the requirements.\n"
+                f"4. Detailed Solution: Provide a detailed solution using a structured approach or algorithm.\n"
+                f"5. Implementation: If applicable, provide a code implementation or practical steps to achieve the solution.\n"
+                f"6. Example or Demonstration: Optionally, include an example or demonstration to illustrate the solution.\n"
+                f"7. Conclusion: Summarize the solution and discuss any considerations or optimizations.\n\n"
+                f"{question}"
+            )
             response = model.generate_content([chain_of_thought_prompt])
-            st.text(response.candidates[0].content.parts[0].text)
+            st.write(response.candidates[0].content.parts[0].text)
 
         except Exception as e:
             st.error(f"Error generating answer: {e}")
