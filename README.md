@@ -6,6 +6,8 @@ This Streamlit-based chatbot application assists users in preparing for intervie
 
 **App Link**:  https://llm-interview-guide-bhargavi.streamlit.app/
 
+**Youtube Video Link:** https://www.youtube.com/watch?v=X5zxJI0dqTw&ab_channel=bhargavisikhakolli
+
 ### Features
 **Interview Preparation Page:** Allows users to select a role (Data Science, Data Engineering, Data Analytics, ML Engineering) and receive a list of topics to cover for interview preparation.
 
