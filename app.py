@@ -2,14 +2,19 @@ import os
 import streamlit as st
 import google.generativeai as genai
 from dotenv import load_dotenv
-
+from streamlit_lottie import st_lottie
+import requests
 # Load environment variables from .env file
 load_dotenv()
 
 # Configure Google API key
 os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY")
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
-
+def load_lottieurl(url:str):
+    r = requests.get(url)
+    if r.status_code !=200:
+        return None
+    return r.json()
 # Initialize the GenerativeModel with Gemini model
 model = genai.GenerativeModel(model_name="gemini-1.5-flash")
 
@@ -23,7 +28,16 @@ options = {
 
 # Streamlit app
 st.title('Interview Preparation Chatbot')
-
+lottie_pro = load_lottieurl("https://assets2.lottiefiles.com/packages/lf20_glp2wakj.json")
+st_lottie(
+            lottie_pro,
+            speed=1,
+            reverse=False,
+            loop=True,
+            height="450px",
+            width=None,
+            key=None,
+        )
 # Sidebar for navigation
 page = st.sidebar.selectbox('Select a page:', ['Interview Preparation', 'Ask a Question'])
 
